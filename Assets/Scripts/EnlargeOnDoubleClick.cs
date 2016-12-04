@@ -12,6 +12,7 @@ public class EnlargeOnDoubleClick : MonoBehaviour {
 	float currentypos;
 	string level;
 	public bool draggable;
+	AudioSource pickupAudio;
 
 
 
@@ -19,7 +20,7 @@ public class EnlargeOnDoubleClick : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		pickupAudio = transform.GetComponent<AudioSource> ();
 
 		scale = transform.localScale;
 		draggable = true;
@@ -36,6 +37,10 @@ public class EnlargeOnDoubleClick : MonoBehaviour {
 
 
 			if (!reset) {
+
+				pickupAudio.pitch = Random.Range (1f, 1.2f);
+				pickupAudio.Play ();
+
 				startxpos = transform.position.x;
 				startypos = transform.position.y;
 				reset = true;

@@ -25,6 +25,9 @@ public class EatMail : MonoBehaviour {
 			state = 0;
 		}
 
+		if (eatingAudio.time > 3.2f) {
+			eatingAudio.Stop ();
+		}
 
 	}
 
@@ -47,7 +50,8 @@ public class EatMail : MonoBehaviour {
 
 				animator.SetInteger ("AnimState", 1);
 				state = 1;
-				eatingAudio.pitch = Random.Range (1.5f, 1.8f);
+				eatingAudio.time = 1.7f;
+				eatingAudio.pitch = Random.Range (1.2f, 1.8f);
 				eatingAudio.Play ();
 
 			}

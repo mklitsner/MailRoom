@@ -6,6 +6,7 @@ public class Camera_Wiggle : MonoBehaviour {
 	bool peacetime;
 	bool audioPlaying;
 	AudioSource warAudio;
+	AudioSource boomAudio;
 	int state;
 	float explosionInterval;
 	float explosionCounter;
@@ -13,7 +14,10 @@ public class Camera_Wiggle : MonoBehaviour {
 	void Start () {
 		animator =GetComponent<Animator> ();
 		explosionInterval = 5;
-		warAudio = GetComponent<AudioSource> ();
+		AudioSource[] audios= GetComponents<AudioSource> ();
+
+		warAudio = audios [0];
+		boomAudio = audios [1];
 	}
 	
 	// Update is called once per frame
@@ -35,6 +39,8 @@ public class Camera_Wiggle : MonoBehaviour {
 				audioPlaying = true;
 			}
 			if (explosionCounter <= 0) {
+				boomAudio.pitch = Random.Range (.8f, 1.2f);
+				boomAudio.Play ();
 				state = 1;
 				explosionInterval = Random.Range (5f, 10f);
 				explosionCounter = explosionInterval;

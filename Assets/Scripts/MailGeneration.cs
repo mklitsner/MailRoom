@@ -268,12 +268,14 @@ public class MailGeneration : MonoBehaviour {
 				if (currentnewsNUM > 3) {
 					currentnewsNUM = 3;
 				} else if (AU_Diplomacy >= .75 && Jov_Diplomacy >= .75) {
-					//continue peace meetings
-					currentnewsNUM = 2;
-				} else if (AU_Diplomacy >= 1 && Jov_Diplomacy >= 1) {
+					if (currentnewsNUM > 2) {
+						currentnewsNUM = 2;
+						//continue peace meetings
+					} else if (AU_Diplomacy == 1 && Jov_Diplomacy == 1) {
 						currentnewsNUM = 1;
 						//reconciliation
 					}
+				}
 			}
 
 
